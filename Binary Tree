@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    char data;
+    struct node* l_c;
+    struct node* r_c;
+};
+struct node* n_n(char data)
+{
+    struct node *p;
+    p=(struct node*)malloc(sizeof(struct node));
+    p->data=data;
+    p->l_c=NULL;
+    p->r_c=NULL;
+    return(p);
+}
+void inorder(struct node *root)
+{
+    if(root!=NULL) 
+    {
+        inorder(root->l_c); 
+        printf(" %c ", root->data); 
+        inorder(root->r_c);
+    }
+}
+
+int main()
+{
+    struct node* root;
+    root=n_n('A');
+    root->l_c=n_n('B');
+    root->r_c=n_n('C');
+    inorder(root);
+}
